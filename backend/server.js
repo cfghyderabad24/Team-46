@@ -1,49 +1,36 @@
-const exp=require('express');
-const path=require('path')
-const cors=require('cors')
-const app=exp();
+const exp = require('express');
+const path = require('path');
+const cors = require('cors');
+const app = exp();
 app.use(cors());
-//body parser
-app.use(exp.json())
-//place react build in http web server
-app.use(exp.static(path.join(__dirname,'../frontend/build')))
-require('dotenv').config()
-const mongoClient=require('mongodb').MongoClient
-//connect to mongo db server
+app.use(exp.json());
+app.use(exp.static(path.join(__dirname, '../frontend/build')));
+require('dotenv').config();
+const mongoClient = require('mongodb').MongoClient;
+
 mongoClient.connect(process.env.URL)
-.then(client=>{
-    //get database
-    const blogDbObj=client.db('JPMC')
-    //create collection object
-    const donorsCollection=blogDbObj.collection('donors')
-    //share collection objects to api's
-    app.set('donorsCollection',donorsCollection)
+.then(client => {
+    const blogDbObj = client.db('JPMC');
+    const donorsCollection = blogDbObj.collection('donors');
+    const productsCollection = blogDbObj.collection('products');
+    app.set('donorsCollection', donorsCollection);
+    app.set('productsCollection', productsCollection);
 
-    //verify
-    console.log("DB connected successfully")
-
+    console.log("DB connected successfully");
 })
-.catch(err=>{
-    console.log("Error in db connectivity",err)
-})
+.catch(err => {
+    console.log("Error in db connectivity", err);
+});
 
+const adminApp = require('./APIs/admin-api');
+const donorApp = require('./APIs/donor-api');
 
+app.use('/admin-api', adminApp);
+app.use('/donor-api', donorApp);
 
-//import api's
-const adminApp=require('./APIs/admin-api')
-const donorApp=require('./APIs/donor-api')
+app.use((err, req, res, next) => {
+    res.send({ status: 'Error', message: err.message });
+});
 
-//handover requests to specific route based on starting of the path
-app.use('/admin-api',adminApp)
-app.use('/donor-api',donorApp)
-
-//errror handling middleware
-app.use((err,req,res,next)=>{
-    res.send({status:'Error',message:err.message})
-})
-
-//get port number from env
-const port=process.env.PORT
-
-//assign port number to http server
-app.listen(port,()=>console.log(`http server on port ${port}`))
+const port = process.env.PORT;
+app.listen(port, () => console.log(`http server on port ${port}`));
