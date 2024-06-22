@@ -1,0 +1,115 @@
+.login-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-form {
+  padding: 20px;
+  width: 400px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+}
+
+.login-form p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-container .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.input-container .input-error {
+  border-color: #ff4d4d;
+}
+
+.input-container .text-danger {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.register-link {
+  margin-top: 20px;
+}
+
+.register-link p {
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+
+.login-background-video {
+  position: absolute;
+  width: 100%;
+  height: 140%;
+  object-fit: cover; /* Ensure the video covers the entire area */
+  z-index: -1; /* Place behind other content */
+}
+
+.login-form {
+  position: relative;
+  z-index: 2; /* Ensure form is above the video */
+  background-color: rgba(255, 193, 193, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center; /* Center align form */
+}
