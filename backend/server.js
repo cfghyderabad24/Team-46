@@ -16,8 +16,10 @@ mongoClient.connect(process.env.URL)
     const blogDbObj=client.db('JPMC')
     //create collection object
     const donorsCollection=blogDbObj.collection('donors')
+    const productsCollection=blogDbObj.collection('products');
     //share collection objects to api's
     app.set('donorsCollection',donorsCollection)
+    app.set('productsCollection',productsCollection)
 
     //verify
     console.log("DB connected successfully")

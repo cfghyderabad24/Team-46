@@ -12,7 +12,7 @@ donorApp.use((req,res,next)=>{
 //craetion
 donorApp.post('/donor',createDonor)
 //user login
-userApp.post('/login',donorLogin)
+donorApp.post('/login',donorLogin)
 //get all articles
 
 

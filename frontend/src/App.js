@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import MyCarousel from "./Components/Carousel";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+  let browserRouter = createBrowserRouter([
+    {
+      path: "",
+      element: <MyCarousel />,
+    },
+    
+  ]);
+  return <RouterProvider router={browserRouter}></RouterProvider>;
 }
-
-export default App;

@@ -51,8 +51,6 @@ const donorLogin=async(req,res)=>{
         }
 
     
-    
-
 
 }
 
