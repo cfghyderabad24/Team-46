@@ -45,7 +45,9 @@ const donorLogin = async (req, res) => {
 
 const updateDonationAmount = async (req, res) => {
     const donorsCollection = req.app.get('donorsCollection');
-    const { username, additional_donation } = req.body;
+    const {  additional_donation ,username  } = req.body;
+    
+
 
     let donor = await donorsCollection.findOne({ username: username });
     if (donor === null) {
