@@ -1,0 +1,41 @@
+.mbody-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f0f0f0; /* Common background color */
+    padding: 20px;
+  }
+  
+  .image-section {
+    flex: 1; /* Occupy 50% of the width */
+    padding: 10px;
+  }
+  
+  .content {
+    flex: 1; /* Occupy 50% of the width */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .imagesec {
+    width: 100%;
+    height: auto;
+  }
+  
+  .btn-pay {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-pay:hover {
+    background-color: #0056b3;
+  }
+  
