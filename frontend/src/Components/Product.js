@@ -10,32 +10,28 @@ const Product = () => {
       name: 'Pads (Pack-4)',
       price: 600,
       image: pad,
-      restaurant: 'Burgers Ahoy!',
-      description: 'Comfortable and absorbent pads for daily use. (Pack-4)'
+      description: 'Comfortable and absorbent pads for daily use. They are 0% plastic and 100% cloth and can be used up to 2 years. (Pack-4)'
     },
     {
       id: 'Pads2 ',
       name: 'Pads (Pack-8)',
       price: 800,
       image: pad,
-      restaurant: 'Burgers Ahoy!',
-      description: 'Comfortable and absorbent pads for daily use. (Pack-8)'
+      description: 'Comfortable and absorbent pads for daily use. They are 0% plastic and 100% cloth and can be used up to 2 years. (Pack-8)'
     },
     {
       id: 'Pads3 ',
       name: 'Pads (Pack-10)',
       price: 1000,
       image: pad,
-      restaurant: 'Burgers Ahoy!',
-      description: 'Comfortable and absorbent pads for daily use. (Pack-10)'
+      description: 'Comfortable and absorbent pads for daily use. They are 0% plastic and 100% cloth and can be used up to 2 years. (Pack-10)'
     },
     {
       id: 'Cup',
       name: 'Cup',
       price: 900,
       image: cup,
-      restaurant: 'Burgers Ahoy!',
-      description: 'Handy and portable notebooks for your daily notes.'
+      description: 'Reusable and eco-friendly cups and can be used up to 8 years.'
     }
   ];
 
@@ -116,14 +112,14 @@ const Product = () => {
                   <p>Price: {product.price}/-</p>
                   <div className="button-container">
                     <button
-                      className={`add-to-cart ${isInCart(product.id) ? 'added' : ''}`}
+                      className={add-to-cart ${isInCart(product.id) ? 'added' : ''}}
                       onClick={() => addToCart(product)}
                       style={isInCart(product.id) ? { backgroundColor: 'black', color: 'white' } : {}}
                     >
                       {isInCart(product.id) ? 'Added' : 'Add to Cart'}
                     </button>
                     <button
-                      className={`wishlist-btn ${isInWishlist(product.id) ? 'added' : ''}`}
+                      className={wishlist-btn ${isInWishlist(product.id) ? 'added' : ''}}
                       onClick={() => addToWishlist(product)}
                       style={isInWishlist(product.id) ? { backgroundColor: '#e91e63', color: 'white' } : {}}
                     >
