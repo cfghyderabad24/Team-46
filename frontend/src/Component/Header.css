@@ -1,0 +1,47 @@
+.header {
+    min-height: 4vh;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+  
+  .nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin-left: 10px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: lightgray;
+  }
+  
+  .nav-link:hover {
+    color: white;
+  }
+  
+  .support-button {
+    padding: 10px 20px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .support-button:hover {
+    background-color: darkred;
+  }
+  
