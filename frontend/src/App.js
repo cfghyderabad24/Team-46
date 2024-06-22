@@ -1,35 +1,76 @@
-import React from 'react';
-import './styles.css';
-import Header from './Header';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import PostForm from './components/PostForm';
+import PostList from './components/PostList';
 
 const App = () => {
-  return (
-    <div>
-      
-    <div className="App">
-      <header className="App-header">
-        <h1>Sponsor a Girl</h1>
-        <p>Your sponsorship will help provide menstrual hygiene support to girls in need.</p>
-        <img src="https://example.com/menstrual-hygiene.jpg" alt="Menstrual Hygiene" className="header-image"/>
-      </header>
-      <div className="content">
-        <h2>How Your Sponsorship Helps</h2>
-        <p>
-          Your sponsorship will ensure that girls have access to essential menstrual hygiene products and education.
-          This support helps them manage their menstrual health with dignity and comfort.
-        </p>
-        <p>
-          Access to menstrual hygiene products enables girls to attend school regularly, participate in daily activities,
-          and maintain good health. It empowers them by removing barriers related to menstruation.
-        </p>
-        <img src="https://example.com/menstrual-education.jpg" alt="Menstrual Education" className="product-image"/>
-      </div>
-      <button onClick={() => window.location.href = 'https://paymentgateway.com/transaction?amount=900'} className="donate-button">
-        Donate 900
-      </button>
-    </div>
-    </div>
-  );
-}
+    const [posts, setPosts] = useState([]);
+    const [userLikes, setUserLikes] = useState(new Set());
+    const [userDislikes, setUserDislikes] = useState(new Set());
+
+    const addPost = (post) => {
+        setPosts([post, ...posts]);
+    };
+
+    const addComment = (postId, comment) => {
+        setPosts(posts.map(post =>
+            post.id === postId ? { ...post, comments: [comment, ...post.comments] } : post
+        ));
+    };
+
+    const likePost = (postId) => {
+        if (userLikes.has(postId)) return;
+
+        setPosts(posts.map(post =>
+            post.id === postId ? { ...post, likes: post.likes + 1, dislikes: post.dislikes - (userDislikes.has(postId) ? 1 : 0) } : post
+        ));
+        setUserLikes(new Set(userLikes).add(postId));
+        setUserDislikes(new Set([...userDislikes].filter(id => id !== postId)));
+    };
+
+    const dislikePost = (postId) => {
+        if (userDislikes.has(postId)) return;
+
+        setPosts(posts.map(post =>
+            post.id === postId ? { ...post, dislikes: post.dislikes + 1, likes: post.likes - (userLikes.has(postId) ? 1 : 0) } : post
+        ));
+        setUserDislikes(new Set(userDislikes).add(postId));
+        setUserLikes(new Set([...userLikes].filter(id => id !== postId)));
+    };
+
+    return (
+        <div style={styles.app}>
+            <Header />
+            <div style={styles.container}>
+                <PostForm addPost={addPost} />
+                <PostList
+                    posts={posts}
+                    addComment={addComment}
+                    likePost={likePost}
+                    dislikePost={dislikePost}
+                    userLikes={userLikes}
+                    userDislikes={userDislikes}
+                />
+            </div>
+        </div>
+    );
+};
+
+const styles = {
+    app: {
+        fontFamily: 'Arial, sans-serif',
+        backgroundColor: '#fce4ec',
+        minHeight: '100vh',
+        padding: '20px'
+    },
+    container: {
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '20px',
+        backgroundColor: '#fff',
+        borderRadius: '10px',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)'
+    }
+};
 
 export default App;
