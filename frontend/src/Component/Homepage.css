@@ -1,0 +1,51 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    background-color: #f4f4f4;
+    padding: 1em;
+    width: 200px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 0.5em 0;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 1em;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  .footer textarea {
+    width: 80%;
+    height: 100px;
+    margin: 10px 0;
+  }
+  
