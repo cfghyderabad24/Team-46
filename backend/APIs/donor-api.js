@@ -1,12 +1,19 @@
-//create admin api app
 const exp=require('express');
-donorApp=exp.Router();
-
-
-donorApp.get('/test-donor',(req,res)=>{
-    res.send({message:"This from donor api"})
+const donorApp=exp.Router()
+const  expressAsyncHandler=require('express-async-handler')
+//import util obj
+const {createDonor,donorLogin}=require('./util')
+let donorsCollection;
+donorApp.use((req,res,next)=>{
+    donorsCollection=req.app.get("donorsCollection");
+    next()
 })
+//define routes
+//craetion
+donorApp.post('/donor',createDonor)
+//user login
+userApp.post('/login',donorLogin)
+//get all articles
 
 
-//export userApp
 module.exports=donorApp;
