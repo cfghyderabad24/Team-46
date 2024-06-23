@@ -73,7 +73,7 @@ ${remainingQuantity > 0 ? `You have ${remainingQuantity} products remaining for 
 Thank you for your contribution!
 
 Best Regards,
-Your Organization`
+GOOD UNIVERSE`
     };
 
     try {

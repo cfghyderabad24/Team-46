@@ -23,29 +23,35 @@ const createDonor = async (req, res) => {
     await donorsCollection.insertOne(userObj);
     res.send("Donor created");
 };
-
 const donorLogin = async (req, res) => {
     const donorsCollection = req.app.get('donorsCollection');
     let userObj = req.body;
     
-    let dbUser = await donorsCollection.findOne({ username: userObj.username });
-    if (dbUser === null) {
-        return res.send({ message: "Invalid username" });
-    } else {
-        let status = await bcryptjs.compare(userObj.password, dbUser.password);
-        if (status === false) {
-            return res.send({ message: "Invalid Password" });
-        } else {
-            const signedToken = jwt.sign({ username: dbUser.username }, process.env.SECRET_KEY, { expiresIn: '20m' });
-            delete dbUser.password;
-            res.send({ message: "LoggedIn successfully", token: signedToken, user: dbUser });
+    try {
+        let dbUser = await donorsCollection.findOne({ username: userObj.username });
+        if (!dbUser) {
+            return res.status(401).send({ message: "Invalid username" });
         }
+        
+        let status = await bcryptjs.compare(userObj.password, dbUser.password);
+        if (!status) {
+            return res.status(401).send({ message: "Invalid password" });
+        }
+        
+        const signedToken = jwt.sign({ username: dbUser.username }, process.env.SECRET_KEY, { expiresIn: '20m' });
+        delete dbUser.password;
+        res.send({ message: "Logged in successfully", token: signedToken, user: dbUser });
+    } catch (err) {
+        console.error("Error during login:", err);
+        res.status(500).send({ message: "Internal server error" });
     }
 };
 
 const updateDonationAmount = async (req, res) => {
     const donorsCollection = req.app.get('donorsCollection');
-    const { username, additional_donation } = req.body;
+    const {  additional_donation ,username  } = req.body;
+    
+
 
     let donor = await donorsCollection.findOne({ username: username });
     if (donor === null) {
