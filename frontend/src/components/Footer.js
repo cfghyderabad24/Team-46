@@ -2,8 +2,9 @@ import React from "react";
 import "./Footer.css"; // Import the CSS file for styling
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter  } from "react-icons/fa";
+import "react-bootstrap";
 
 const Footer = () => {
   return (
@@ -12,7 +13,7 @@ const Footer = () => {
         <div className="row">
           <ul>
             <li>
-              <a href="#">
+              <a href="https://www.facebook.com/GoodUniverseNGO">
                 <span className="icon">
                   <FaFacebook />
                 </span>
@@ -20,21 +21,21 @@ const Footer = () => {
             </li>
             <li>
               {" "}
-              <a href="#">
+              <a href="https://www.instagram.com/gooduniversengo?igshid=YmMyMTA2M2Y%3D">
                 <span className="icon">
                   <FaInstagram />
                 </span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.linkedin.com/company/gooduniversengo/">
                 <span className="icon">
-                  <FaYoutube />
+                  <FaLinkedin />
                 </span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://x.com/GooduniverseNGO?mx=2">
                 <span className="icon">
                   <FaTwitter />
                 </span>
@@ -46,7 +47,7 @@ const Footer = () => {
         <div className="row">
           <ul>
             <li>
-              <a href="#">Contact us</a>
+              <a href="https://gooduniverse.org/contact.html">Contact us</a>
             </li>
             <li>
               <a href="#">Our Services</a>
@@ -63,9 +64,10 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="row text-center">
-          RideShift Copyright © 2024 RideShift - All rights reserved
+        <div className="row text-center footer-text">
+          GOOD UNIVERSE Copyright © 2024 GOOD UNIVERSE - All rights reserved
         </div>
+
       </div>
     </footer>
   );

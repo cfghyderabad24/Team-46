@@ -1,3 +1,4 @@
+// NavbarAdmin.js
 import React from 'react';
 import './NavbarAdmin.css';
 import sample from './image.png';

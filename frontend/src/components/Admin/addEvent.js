@@ -1,13 +1,23 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import './EventForm.css';
 
 function AddEvent({ onAddEvent }) {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const onSubmit = (data) => {
-    if (onAddEvent) {
-      onAddEvent(data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:4000/admin/new-event", data);
+      if (response.status === 200) {
+        if (onAddEvent) {
+          onAddEvent(data); // Add the event locally after successful submission
+        }
+        // Clear the form after successful submission
+        reset();
+      }
+    } catch (error) {
+      console.error('Error adding event:', error);
     }
   };
 

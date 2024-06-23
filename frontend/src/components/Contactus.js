@@ -5,7 +5,8 @@ import { GoMail } from "react-icons/go";
 import { useForm } from 'react-hook-form';
 import { Modal, Button } from 'react-bootstrap';
 import '../App.css';
-
+import Header from './Header';
+import Footer from './Footer';
 
 function Contactus() {
   let { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -32,7 +33,9 @@ function Contactus() {
   }
 
   return (
-    <div className='container w-75 h-75 my-auto bg-light'>
+    <div>
+      <Header />
+    <div className='container w-75 h-75 my-auto bg-light mb-5'>
       <div className='p-4'></div>
       <div className='rounded-lg'>
         <div className='row mt-5 my-auto'>
@@ -114,6 +117,8 @@ function Contactus() {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
+    <Footer />
     </div>
   );
 }

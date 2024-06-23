@@ -2,8 +2,11 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import logo from "./logooo.png"; // Import your logo image
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  
+let navigate=useNavigate();
   return (
     <div className="header" style={{ minHeight: "4vh", display: 'flex', backgroundColor: "black", alignItems: 'center', justifyContent: 'space-between', padding: '10px' }} >
       {/* Logo displayed at the top-left corner */}
@@ -21,19 +24,25 @@ function Header() {
             About Us
           </ScrollLink>
         </li>
-        <li className="nav-item p-2">
-          <RouterLink className="nav-link text-light" to="/signup">
-            Signup
-          </RouterLink>
-        </li>
+        
         <li className="nav-item p-2">
           <RouterLink className="nav-link text-light" to="/signin">
             Signin
           </RouterLink>
         </li>
-        
+{/*         
         <li className="nav-item p-2">
-          <button className="btn btn-light p-2">Support a Girl Child</button>
+          <RouterLink className="nav-link text-light" to="/product">
+            Shop
+          </RouterLink>
+        </li> */}
+        <li className="nav-item p-2">
+          <RouterLink className="nav-link text-light" to="/Community">
+            Community
+          </RouterLink>
+        </li>
+        <li className="nav-item p-2">
+          <button className="btn btn-light p-2" onClick={()=>navigate('/Advocacy')}>Support a Girl Child</button>
         </li>
       </ul>
     </div>

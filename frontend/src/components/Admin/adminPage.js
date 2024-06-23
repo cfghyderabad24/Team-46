@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import AddEvent from './addEvent';
+/* import React, { useState } from 'react';
+import AddEvent from './AddEvent';
 import './adminPage.css';
+import axios from 'axios';
 
 function AdminPage() {
   const [events, setEvents] = useState([]);
@@ -16,7 +17,18 @@ function AdminPage() {
       location: eventData.location,
     };
 
-    setEvents([...events, newEvent]);
+    setEvents([...events, newEvent]); // Add the event locally
+  };
+
+  const sendEmails = async (eventData) => {
+    try {
+      const response = await axios.post("http://localhost:4000/admin/send-emails", eventData);
+      if (response.status === 200) {
+        console.log("Emails sent successfully");
+      }
+    } catch (error) {
+      console.error('Error sending emails:', error);
+    }
   };
 
   return (
@@ -41,8 +53,9 @@ function AdminPage() {
         ))}
       </div>
       <AddEvent onAddEvent={onAddEvent} />
+      <button className="btn btn-primary mt-3" onClick={() => sendEmails(events[events.length - 1])}>Send Emails</button>
     </div>
   );
 }
 
-export default AdminPage;
+export default AdminPage; */

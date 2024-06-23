@@ -1,15 +1,18 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from './NavbarAdmin'
-function RootLayout() {
+/* // AdminRootLayout.js
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import NavbarAdmin from './NavbarAdmin';
+
+function AdminRootLayout() {
   return (
     <div>
-        <Navbar/>
-        <div style = {{minHeight:"120vh"}}>
-            <Outlet/>
-        </div>
+      <NavbarAdmin />
+      <div style={{ minHeight: "120vh" }}>
+        <Outlet />
+      </div>
     </div>
-  )
+  );
 }
 
-export default RootLayout
+export default AdminRootLayout;
+ */
